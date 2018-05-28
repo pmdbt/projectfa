@@ -44,8 +44,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     }
   ]
   };
-  message = 'Hello World!';
-  source: any;
   activities;
   constructor(private mapService: MapService) { }
 
@@ -53,7 +51,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.initializeMap();
   }
   ngAfterViewInit() {
-    // this.loadLocations();
+    this.buildMap();
   }
 
   initializeMap() {
@@ -67,32 +65,29 @@ export class MapComponent implements OnInit, AfterViewInit {
         });
       });
     }
-    this.buildMap();
   }
   buildMap() {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 3,
+      zoom: 12,
       center: [this.lng, this.lat]
     });
     /// Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
     this.loadLocations();
-    console.log('ths.map in buildMap', this.map);
   }
   loadLocations() {
-    console.log('this.map in loadLocations', this.map);
-    console.log('this.markers', this.markers);
-    this.markers.features.forEach(function (marker) {
-    console.log('marker in forEach', marker);
+    // make a marker for each feature and add to the map
+    this.markers.features.forEach(marker => {
   //     // create a HTML element for each feature
       const el = document.createElement('div');
-      el.className = 'marker';
-  //     // make a marker for each feature and add to the map
-      // let map = new mapboxgl.Marker(el)
-      //   .setLngLat(marker.geometry.coordinates)
-      //   .addTo(this.map);
+      el.className = 'markers';
+      // tslint:disable-next-line:max-line-length
+      el.style.cssText = 'background-image: url("../../../assets/mapmarker.png");background-size: cover;width: 20px;height: 20px;border-radius: 50%;cursor: pointer;';
+      new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(this.map);
     });
   }
 }
