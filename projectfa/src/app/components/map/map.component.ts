@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MapService } from '../../services/map.service';
 import { IActivity } from '../../shared/activity.model';
-// import { ActivityService } from '../../services/activity.service';
 import { ActivatedRoute } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { GeoJson, FeatureCollection } from './map';
@@ -42,7 +41,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         'type': 'Point'
       }
     }
-  ]
+    ]
   };
   activities;
   constructor(private mapService: MapService) { }
@@ -70,24 +69,38 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 12,
+      zoom: 6,
       center: [this.lng, this.lat]
     });
     /// Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
-    this.loadLocations();
+    // this.loadLocations();
+    this.addLayer();
   }
-  loadLocations() {
-    // make a marker for each feature and add to the map
-    this.markers.features.forEach(marker => {
-  //     // create a HTML element for each feature
-      const el = document.createElement('div');
-      el.className = 'markers';
-      // tslint:disable-next-line:max-line-length
-      el.style.cssText = 'background-image: url("../../../assets/mapmarker.png");background-size: cover;width: 20px;height: 20px;border-radius: 50%;cursor: pointer;';
-      new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        .addTo(this.map);
+  // loadLocations() {
+  //   // make a marker for each feature and add to the map
+  //   this.markers.features.forEach(marker => {
+  //     //     // create a HTML element for each feature
+  //     const el = document.createElement('div');
+  //     el.className = 'markers';
+  //     // tslint:disable-next-line:max-line-length
+  //     el.style.cssText = 'background-image: url("../../../assets/mapmarker.png");background-size: cover;width: 20px;height: 20px;border-radius: 50%;cursor: pointer;';
+  //     new mapboxgl.Marker(el)
+  //       .setLngLat(marker.geometry.coordinates)
+  //       .addTo(this.map);
+  //   });
+  // }
+  addLayer() {
+    this.map.on('load', () => {
+      this.map.addSource('pointsSource', {
+        type: 'geojson',
+        data: this.markers
+      });
+      this.map.addLayer({
+        id: 'points',
+        source: 'pointsSource',
+        type: 'circle'
+      });
     });
   }
 }
