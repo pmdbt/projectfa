@@ -1,4 +1,4 @@
-﻿{
+﻿ {
   "features": [
     {
       "type": "Feature",
@@ -14,16 +14,16 @@
         "type": "Point"
       }
     },
-    {
+      {
       "type": "Feature",
       "properties": {
-        "title": "Burnham Park",
-        "description": "A lakefront park on Chicago's south side"
+        "title": "Lincoln Park",
+        "description": "A northside park that is home to the Lincoln Park Zoo"
       },
       "geometry": {
         "coordinates": [
-          -87.603735,
-          41.829985
+          -118.2437,
+          34.0522
         ],
         "type": "Point"
       }
@@ -122,6 +122,35 @@
         "coordinates": [
           -87.769775,
           41.873683
+        ],
+        "type": "Point"
+      }
+    },
+        
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "",
+        "description": ""
+      },
+      "geometry": {
+        "coordinates": [
+          -87.603735,
+          41.829985
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "",
+        "description": ""
+      },
+      "geometry": {
+        "coordinates": [
+          122.4194,
+          37.7749
         ],
         "type": "Point"
       }

@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+// import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
@@ -18,7 +21,9 @@ import { appRoutes } from '../routes';
   ],
   imports: [
     BrowserModule,
-    LeafletModule.forRoot(),
+    // LeafletModule.forRoot(),
+    HttpClientModule,
+    FlexLayoutModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [MapService],
