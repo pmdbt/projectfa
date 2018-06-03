@@ -4,9 +4,10 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { GeoJson } from '../components/map/map';
 import * as mapboxgl from 'mapbox-gl';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class MapService {
   constructor(private http: HttpClient) {
     mapboxgl.accessToken = environment.mapbox.accessToken;
@@ -14,7 +15,7 @@ export class MapService {
   mapData;
   loadDummyData() {
     return this.http.get('../../../assets/chicago-parks.geojson')
-      .map(response => this.mapData = response);
+      .pipe(map(response => this.mapData = response));
   }
 }
 

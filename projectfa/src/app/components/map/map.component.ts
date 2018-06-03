@@ -82,6 +82,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 //     const el = document.createElement('div');
 //     el.className = 'markers';
 //     // tslint:disable-next-line:max-line-length
+// tslint:disable-next-line:max-line-length
 //     el.style.cssText = 'background-image: url("../../../assets/mapmarker.png");background-size: cover;width: 20px;height: 20px;border-radius: 50%;cursor: pointer;';
 //     new mapboxgl.Marker(el)
 //       .setLngLat(marker.geometry.coordinates)

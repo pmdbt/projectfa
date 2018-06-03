@@ -1,32 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-// import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule, MatSidenavModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
-import { MapService } from './services/map.service';
-// import { ActivityService } from './services/activity.service';
 import { HomeComponent } from './components/home/home.component';
 import { appRoutes } from '../routes';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    // LeafletModule.forRoot(),
+    BrowserAnimationsModule,
     HttpClientModule,
-    FlexLayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [MapService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
