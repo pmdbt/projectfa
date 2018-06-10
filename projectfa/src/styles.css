@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-/* .markers {
-    background-image: url('./assets/mapmarker.png');
-    background-size: cover;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-  } */
+  html,
+  body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    /* height: 100%; */
+  }
+

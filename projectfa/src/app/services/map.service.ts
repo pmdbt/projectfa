@@ -14,7 +14,7 @@ export class MapService {
   }
   mapData;
   loadDummyData() {
-    return this.http.get('../../../assets/chicago-parks.geojson')
+    return this.http.get('../../../assets/neighbourhoods.geojson')
       .pipe(map(response => this.mapData = response));
   }
 }

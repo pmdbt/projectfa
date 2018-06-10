@@ -14,7 +14,7 @@ import { GeoJson, FeatureCollection } from './map';
 export class MapComponent implements OnInit, AfterViewInit {
   /// default settings
   map: mapboxgl.Map;
-  style = 'mapbox://styles/mapbox/light-v9';
+  style = 'mapbox://styles/mapbox/dark-v9';
   lat = 34.0522;
   lng = -118.2437;
   markers;
@@ -50,7 +50,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 3,
+      zoom: 12,
       center: [this.lng, this.lat]
     });
     /// Add map controls

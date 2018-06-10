@@ -1,10 +1,11 @@
-<app-navbar></app-navbar>
-<div class="container">
-    <nav id="" class="navbar navbar-custom">
-        <a class="navbar-brand" href="#"><p class="logo">{{ title }}</p></a>
-    </nav> 
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
-</div>
-<app-map></app-map>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+        <app-sidenav-list (closeSidenav)="sidenav.close()"></app-sidenav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
