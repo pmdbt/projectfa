@@ -44,6 +44,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         });
       });
     }
+    
   }
 
   buildMap() {
@@ -53,6 +54,12 @@ export class MapComponent implements OnInit, AfterViewInit {
       zoom: 12,
       center: [this.lng, this.lat]
     });
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+          enableHighAccuracy: true
+      },
+      trackUserLocation: true
+  }));
     /// Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
     // this.loadLocations();
@@ -72,6 +79,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       });
     });
   }
+
 }
 
 
