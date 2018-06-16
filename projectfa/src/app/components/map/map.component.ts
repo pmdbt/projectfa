@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { GeoJson, FeatureCollection } from './map';
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -22,7 +21,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   constructor(private mapService: MapService) { }
 
   ngOnInit() {
-    this.initializeMap();
+    // this.initializeMap();
     this.mapService.loadDummyData()
       .subscribe(data => {
         this.markers = data;
@@ -33,26 +32,27 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.buildMap();
   }
 
-  initializeMap() {
+  flyToUser() {
     /// locate the user
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.map.flyTo({
-          center: [this.lng, this.lat]
-        });
-      });
-    }
-    
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(position => {
+    //     this.lat = position.coords.latitude;
+    //     this.lng = position.coords.longitude;
+    //     this.map.flyTo({
+    //       center: [this.lng, this.lat]
+    //     });
+    //   });
+    // }
   }
 
   buildMap() {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: this.style,
-      zoom: 12,
-      center: [this.lng, this.lat]
+      zoom: 2,
+      center: [this.lng, this.lat],
+      trackResize: true,
+      interactive: true
     });
     this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {

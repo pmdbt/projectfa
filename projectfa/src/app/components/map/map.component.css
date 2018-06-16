@@ -1,9 +1,53 @@
+
 #map {
     /* display: block; */
-    /* position: relative; */
-    width: 400px;
-    height: 400px;
+    /* position: absolute; */
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 700px;
+    max-height: 700px;
     border: 1px solid blue;
     top: 0;
     bottom: 0
 }
+#legend {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 45px;
+}
+.mapView {
+    position: relative;
+}
+.bar {
+    position: absolute;
+    background: linear-gradient(to left, red , yellow, lightblue);
+    max-height: 8vh;
+    max-width: 15vw;
+    min-height: 4vh;
+    min-width: 10vw;
+    top: 0;
+    bottom: 0;
+    border-radius: .5vw;
+    border: 1px solid grey;
+}
+  
+.alignleft {
+    float: left;
+}
+
+.bottomLeft {
+    position: absolute;
+    bottom: -26px;
+    left: 8px;
+    font-weight: bold;
+}
+.bottomRight {
+    position: absolute;
+    bottom: -26px;
+    right: 307px;
+    font-weight: bold;
+}
+  span {
+    content: "\27F6";
+  }
